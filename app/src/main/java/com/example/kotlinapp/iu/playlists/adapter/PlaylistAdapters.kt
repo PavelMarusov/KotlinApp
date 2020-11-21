@@ -1,4 +1,4 @@
-package com.example.kotlinapp.iu.adapters
+package com.example.kotlinapp.iu.playlists.adapter
 
 import android.view.LayoutInflater
 import android.view.View
@@ -8,10 +8,9 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.kotlinapp.R
 import com.example.kotlinapp.iu.loadImage
-import com.example.kotlinapp.models.Playlist
 import com.example.kotlinapp.models.PlaylistItems
 
-class PlaylistAdapters : RecyclerView.Adapter<PlaylistAdapters.PlaylistHolder>() {
+class PlaylistAdapters (private var listener:(PlaylistItems) -> Unit) : RecyclerView.Adapter<PlaylistAdapters.PlaylistHolder>() {
 
     var list: MutableList<PlaylistItems> = mutableListOf()
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PlaylistHolder {
@@ -32,6 +31,9 @@ class PlaylistAdapters : RecyclerView.Adapter<PlaylistAdapters.PlaylistHolder>()
         }
         holder.title.text = list[position].snippet?.title
         holder.count.text = list[position].contentDetails?.itemCount
+        holder.itemView.setOnClickListener{
+           listener(list[position])
+        }
     }
     fun addItems(item:MutableList<PlaylistItems>){
         this.list = item
