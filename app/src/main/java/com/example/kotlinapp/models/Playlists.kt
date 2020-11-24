@@ -1,6 +1,13 @@
 package com.example.kotlinapp.models
 
+import androidx.room.Entity
+import androidx.room.PrimaryKey
+
+
+@Entity
 data class Playlist(
+    @PrimaryKey (autoGenerate = true)
+    var id: Long? = null,
     var kind: String? = null,
     var etag: String? = null,
     var items: MutableList<PlaylistItems>? = null
