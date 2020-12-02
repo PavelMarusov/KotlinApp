@@ -8,6 +8,7 @@ import com.example.kotlinapp.dataBase.DataBaseClient
 class App: Application() {
     companion object{
         lateinit var database:AppDatabase
+        lateinit var preferences: Preferences
     }
 
     override fun onCreate() {
@@ -18,6 +19,7 @@ class App: Application() {
 
             "playlist.database"
         ).allowMainThreadQueries().build()
+        preferences = Preferences(this)
 
     }
 }

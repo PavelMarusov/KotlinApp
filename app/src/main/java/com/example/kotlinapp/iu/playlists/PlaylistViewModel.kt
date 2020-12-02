@@ -5,12 +5,13 @@ import android.widget.Toast
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.kotlinapp.App
+import com.example.kotlinapp.base.BaseViewModel
 import com.example.kotlinapp.dataBase.DataBaseClient
 import com.example.kotlinapp.models.Playlist
 import com.example.kotlinapp.repository.YoutubeRepository
 
-class PlaylistViewModel : ViewModel() {
-   lateinit var  liveData:MutableLiveData<Playlist?>
+class PlaylistViewModel : BaseViewModel() {
+
     fun fetchPlaylists(): MutableLiveData<Playlist?> {
         return YoutubeRepository().fetchPlaylistsFromNetwork()
     }

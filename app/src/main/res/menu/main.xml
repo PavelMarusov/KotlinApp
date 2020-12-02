@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/language_russian"
+        android:orderInCategory="100"
+        android:title="@string/русский"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/language_english"
+        android:orderInCategory="100"
+        android:title="@string/english"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/language_korean"
+        android:orderInCategory="100"
+        android:title="@string/korean"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/language_kyrgyz"
+        android:orderInCategory="100"
+        android:title="@string/кыргызча"
+        app:showAsAction="never" />
+
+
+
+</menu>

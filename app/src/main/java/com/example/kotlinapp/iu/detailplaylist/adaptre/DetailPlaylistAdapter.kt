@@ -10,8 +10,9 @@ import com.example.kotlinapp.R
 import com.example.kotlinapp.iu.loadImage
 import com.example.kotlinapp.iu.playlists.adapter.PlaylistAdapters
 import com.example.kotlinapp.models.DetailVideo
+import com.example.kotlinapp.models.PlaylistItems
 
-class DetailPlaylistAdapter: RecyclerView.Adapter<DetailPlaylistAdapter.DetailHolder>() {
+class DetailPlaylistAdapter (private var listener:(DetailVideo) -> Unit): RecyclerView.Adapter<DetailPlaylistAdapter.DetailHolder>() {
     var list: MutableList<DetailVideo> = mutableListOf()
 
 
@@ -28,6 +29,9 @@ class DetailPlaylistAdapter: RecyclerView.Adapter<DetailPlaylistAdapter.DetailHo
     override fun onBindViewHolder(holder: DetailHolder, position: Int) {
         holder.imageVideo.loadImage(list[position].snippetD?.thumbnailsD?.mediumD?.urlD.toString())
         holder.titleVideo.text=list[position].snippetD?.title
+        holder.itemView.setOnClickListener{
+            listener(list[position])
+        }
     }
 
     fun initList( listItems:MutableList<DetailVideo>){

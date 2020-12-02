@@ -9,6 +9,7 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.example.kotlinapp.App
 import com.example.kotlinapp.R
+import com.example.kotlinapp.base.BaseActivity
 import com.example.kotlinapp.iu.detailplaylist.DetailPlaylistActivity
 import com.example.kotlinapp.iu.playlists.adapter.PlaylistAdapters
 import com.example.kotlinapp.models.Playlist
@@ -16,27 +17,28 @@ import com.example.kotlinapp.models.PlaylistItems
 import kotlinx.android.synthetic.main.activity_playlits.*
 
 
-class PlaylistsActivity : AppCompatActivity() {
-    private lateinit var viewModel: PlaylistViewModel
+class PlaylistsActivity : BaseActivity<PlaylistViewModel>(R.layout.activity_playlits) {
+
     private lateinit var adapter: PlaylistAdapters
     private lateinit var item:Playlist
     private var list: MutableList<Playlist> = mutableListOf()
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_playlits)
-        viewModel = ViewModelProvider(this).get(PlaylistViewModel::class.java)
-        setupAdapter()
-        getData()
-        fromDB()
-//        addFromDB()
+
+    override val viewModel: PlaylistViewModel
+        get() =ViewModelProvider(this).get(PlaylistViewModel::class.java)
+
+    override fun setupViews() {
+       setupAdapter()
+    }
+
+    override fun setupLiveData() {
 
     }
-//    private fun addFromDB(){
-//        viewModel.getDataFromDB(item)
-//        Toast.makeText(this,"Save", Toast.LENGTH_LONG).show()
-//
-//        Log.d("pop","DB ="+ App.database.historyDao().getAll().toString())
-//    }
+
+    override fun setupFetchRequests() {
+        getData()
+        fromDB()
+    }
+
     fun fromDB(){
     App.database.historyDao().getAll()?.observe(this, Observer { playlists ->
         val data = mutableListOf<PlaylistItems>()
@@ -67,4 +69,6 @@ class PlaylistsActivity : AppCompatActivity() {
         intent.putExtra("id",item.id)
         startActivity(intent)
     }
+
+
 }
