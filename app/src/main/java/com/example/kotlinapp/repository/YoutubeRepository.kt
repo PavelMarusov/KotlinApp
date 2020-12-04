@@ -43,12 +43,12 @@ class YoutubeRepository {
             .enqueue(object : Callback<PlayListDetail?> {
                 override fun onFailure(call: Call<PlayListDetail?>, t: Throwable) {
                     data.value = null
-                    Log.d("pop", "error" + t.message)
+                    Log.e("pop", "error" + t.message)
                 }
 
                 override fun onResponse(call: Call<PlayListDetail?>, response: Response<PlayListDetail?>) {
                     data.value = response.body()
-                    Log.d("pop", "ok " + response.body())
+                    Log.e("pop", "ok " + response.body())
                 }
             })
         return data

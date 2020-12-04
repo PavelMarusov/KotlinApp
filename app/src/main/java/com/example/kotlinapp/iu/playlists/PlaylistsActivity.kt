@@ -12,6 +12,7 @@ import com.example.kotlinapp.R
 import com.example.kotlinapp.base.BaseActivity
 import com.example.kotlinapp.iu.detailplaylist.DetailPlaylistActivity
 import com.example.kotlinapp.iu.playlists.adapter.PlaylistAdapters
+import com.example.kotlinapp.iu.showToast
 import com.example.kotlinapp.models.Playlist
 import com.example.kotlinapp.models.PlaylistItems
 import kotlinx.android.synthetic.main.activity_playlits.*
@@ -40,10 +41,13 @@ class PlaylistsActivity : BaseActivity<PlaylistViewModel>(R.layout.activity_play
     }
 
     fun fromDB(){
+        var isFirst:Boolean? = true
     App.database.historyDao().getAll()?.observe(this, Observer { playlists ->
         val data = mutableListOf<PlaylistItems>()
        for (i in playlists!!) i.items?.let { data.addAll(it) }
         adapter.addItems(data)
+
+
     })
 }
 

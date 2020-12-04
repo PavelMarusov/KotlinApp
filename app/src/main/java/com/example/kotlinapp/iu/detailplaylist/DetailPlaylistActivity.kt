@@ -33,7 +33,6 @@ class DetailPlaylistActivity : BaseActivity<DetailViewModel> (R.layout.activity_
     override fun setupViews() {
         initAdapter()
         comminIntent()
-//        setSupportActionBar(findViewById(R.id.toolbar))
         findViewById<CollapsingToolbarLayout>(R.id.toolbar_layout).title = title
         findViewById<FloatingActionButton>(R.id.fab).setOnClickListener { view ->
             Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
@@ -56,11 +55,14 @@ class DetailPlaylistActivity : BaseActivity<DetailViewModel> (R.layout.activity_
 
     }
 
-    fun onItemClick(item: DetailVideo) {
+    fun onItemClick(item: DetailVideo?) {
         var intent = Intent(this, DetailinfoActivity::class.java)
-        intent.putExtra("keyUrl",item.snippetD?.thumbnailsD?.mediumD?.urlD )
-        intent.putExtra("keyTitle",item.snippetD?.title )
-        intent.putExtra("keyDescription",item.snippetD?.description)
+        intent.putExtra("keyUrl",item?.snippetD?.thumbnailsD?.mediumD?.urlD )
+        intent.putExtra("keyTitle",item?.snippetD?.title )
+        intent.putExtra("keyDescription",item?.snippetD?.description)
+        intent.putExtra("videoId",item?.snippetD?.recourseId?.videoId)
+        Log.e("pop", "Item $item")
+        intent.putExtra("model",item)
         startActivity(intent)
     }
 
