@@ -1,7 +1,7 @@
 package com.example.kotlinapp.data.network
 
-import com.example.kotlinapp.models.PlayListDetail
 import com.example.kotlinapp.models.Playlist
+import com.example.kotlinapp.models.PlaylistItems
 import retrofit2.Call
 import retrofit2.http.GET
 import retrofit2.http.Query
@@ -23,5 +23,5 @@ interface YoutybeApi {
         @Query("part") part: String,
         @Query("playlistId") playlistId: String?,
         @Query("pageToken") pageToken: String?
-    ): Call<PlayListDetail>
+    ): Call<Playlist>
 }

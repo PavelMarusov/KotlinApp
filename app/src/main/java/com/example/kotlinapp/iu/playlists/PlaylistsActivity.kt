@@ -1,10 +1,6 @@
 package com.example.kotlinapp.iu.playlists
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
-import android.os.Bundle
-import android.util.Log
-import android.widget.Toast
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.example.kotlinapp.App
@@ -12,7 +8,6 @@ import com.example.kotlinapp.R
 import com.example.kotlinapp.base.BaseActivity
 import com.example.kotlinapp.iu.detailplaylist.DetailPlaylistActivity
 import com.example.kotlinapp.iu.playlists.adapter.PlaylistAdapters
-import com.example.kotlinapp.iu.showToast
 import com.example.kotlinapp.models.Playlist
 import com.example.kotlinapp.models.PlaylistItems
 import kotlinx.android.synthetic.main.activity_playlits.*

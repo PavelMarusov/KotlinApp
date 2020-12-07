@@ -8,9 +8,9 @@ import android.view.View
 import android.view.WindowManager
 import androidx.appcompat.app.AppCompatActivity
 import com.example.kotlinapp.R
-import com.example.kotlinapp.iu.changeLanguage
-import com.example.kotlinapp.iu.loadLocale
-import com.example.kotlinapp.iu.showToast
+import com.example.kotlinapp.changeLanguage
+import com.example.kotlinapp.loadLocale
+import com.example.kotlinapp.showToast
 
 abstract class BaseActivity <ViewModel:BaseViewModel>(private var layoutId:Int): AppCompatActivity() {
     abstract val viewModel: ViewModel

@@ -7,13 +7,11 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.kotlinapp.R
-import com.example.kotlinapp.iu.loadImage
-import com.example.kotlinapp.iu.playlists.adapter.PlaylistAdapters
-import com.example.kotlinapp.models.DetailVideo
+import com.example.kotlinapp.loadImage
 import com.example.kotlinapp.models.PlaylistItems
 
-class DetailPlaylistAdapter (private var listener:(DetailVideo) -> Unit): RecyclerView.Adapter<DetailPlaylistAdapter.DetailHolder>() {
-    var list: MutableList<DetailVideo> = mutableListOf()
+class DetailPlaylistAdapter (private var listener:(PlaylistItems) -> Unit): RecyclerView.Adapter<DetailPlaylistAdapter.DetailHolder>() {
+    var list: MutableList<PlaylistItems> = mutableListOf()
 
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): DetailHolder {
@@ -27,14 +25,14 @@ class DetailPlaylistAdapter (private var listener:(DetailVideo) -> Unit): Recycl
     }
 
     override fun onBindViewHolder(holder: DetailHolder, position: Int) {
-        holder.imageVideo.loadImage(list[position].snippetD?.thumbnailsD?.mediumD?.urlD.toString())
-        holder.titleVideo.text=list[position].snippetD?.title
+        holder.imageVideo.loadImage(list[position].snippet?.thumbnails?.medium?.url.toString())
+        holder.titleVideo.text=list[position].snippet?.title
         holder.itemView.setOnClickListener{
             listener(list[position])
         }
     }
 
-    fun initList( listItems:MutableList<DetailVideo>){
+    fun initList( listItems:MutableList<PlaylistItems>){
         this.list=listItems
     }
     class DetailHolder (itemView: View): RecyclerView.ViewHolder(itemView){

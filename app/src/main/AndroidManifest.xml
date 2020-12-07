@@ -12,11 +12,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.KotlinApp">
-        <activity android:name=".iu.detailinfo.DetailinfoActivity"
-            android:configChanges="orientation|screenSize|keyboardHidden|smallestScreenSize|screenLayout"
-            >
-
-        </activity>
+        <activity android:name=".iu.detailinfo.DetailinfoActivity" />
         <activity android:name=".iu.detailplaylist.DetailPlaylistActivity" />
         <activity android:name=".iu.playlists.PlaylistsActivity">
             <intent-filter>

@@ -7,7 +7,7 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.kotlinapp.R
-import com.example.kotlinapp.iu.loadImage
+import com.example.kotlinapp.loadImage
 import com.example.kotlinapp.models.PlaylistItems
 
 class PlaylistAdapters (private var listener:(PlaylistItems) -> Unit) : RecyclerView.Adapter<PlaylistAdapters.PlaylistHolder>() {

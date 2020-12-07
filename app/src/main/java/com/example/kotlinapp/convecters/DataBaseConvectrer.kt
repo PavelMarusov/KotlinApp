@@ -1,4 +1,4 @@
-package com.example.convecters
+package com.example.kotlinapp.convecters
 
 import androidx.room.TypeConverter
 import com.example.kotlinapp.models.PlaylistItems

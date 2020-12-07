@@ -1,4 +1,4 @@
-package com.example.kotlinapp.iu
+package com.example.kotlinapp
 
 import android.app.Activity
 import android.app.AlertDialog
@@ -8,10 +8,7 @@ import android.view.View
 import android.widget.ImageView
 import android.widget.Toast
 import com.bumptech.glide.Glide
-import com.example.kotlinapp.App
-import com.example.kotlinapp.Preferences
-import com.example.kotlinapp.Preferences.Companion.getInstance
-import com.example.kotlinapp.R
+import com.google.android.material.snackbar.Snackbar
 import java.util.*
 
 
@@ -22,50 +19,57 @@ fun ImageView.loadImage(url: String) {
         .centerCrop()
         .into(this)
 }
+
 fun Context.showToast(message: String) {
     Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
 }
-fun View.gone(){
+
+fun View.gone() {
     this.visibility = View.GONE
 }
-fun View.visible(){
+
+fun View.visible() {
     this.visibility = View.VISIBLE
 }
-private fun setLocale(s: String, context:Context) {
+
+private fun setLocale(s: String, context: Context) {
     val locale = Locale(s)
     Locale.setDefault(locale)
     val config = Configuration()
     config.locale = locale
     context.resources.updateConfiguration(
         config,
-        context.resources.displayMetrics)
+        context.resources.displayMetrics
+    )
 
     App.preferences.saveLanguage(s)
 }
+
 fun loadLocale(context: Context) {
     var language: String? = App.preferences.preference
     if (language != null) {
-        setLocale(language,context)
+        setLocale(language, context)
     }
 }
+
 fun Activity.changeLanguage() {
-    val listItems = arrayOf("Русский","English","Корейский","Кыргызский")
+    val listItems = arrayOf("Русский", "English", "Корейский", "Кыргызский")
     val mBuilder = AlertDialog.Builder(this)
 
     mBuilder.setTitle(getString(R.string.выберите_язык))
     mBuilder.setSingleChoiceItems(listItems, -1) { dialog, which ->
         when (which) {
             0 -> {
-                setLocale("ru",this)
+                setLocale("ru", this)
             }
             1 -> {
-                setLocale("chr-rUS",this)
+                setLocale("chr-rUS", this)
             }
             2 -> {
-                setLocale("ko-rKR",this)
+                setLocale("ko-rKR", this)
             }
             3 -> {
-                setLocale("ky",this)
+                setLocale("ky", this)
             }
 
         }
@@ -75,3 +79,9 @@ fun Activity.changeLanguage() {
     val mDialog = mBuilder.create()
     mDialog.show()
 }
+
+fun View.showSnackBar(context: Context, message: String) {
+    Snackbar.make(this, message, Snackbar.LENGTH_LONG).show()
+}
+
+
